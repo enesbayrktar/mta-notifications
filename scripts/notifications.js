@@ -1,17 +1,13 @@
-const popupSound = new Audio('sounds/plop.mp3');
-
 const createNotification = (msg, options) => {
 	const opts = options ? JSON.parse(options)[0] : {};
 	const type = opts.type || 'info';
-	const animIn = 'animated ' + (opts.animIn || 'rubberBand');
-	const animOut = 'animated ' + (opts.animOut || 'flipOutY delay-4s');
+	const animIn = 'animated ' + (opts.animIn || 'fadeIn');
+	const animOut = 'animated ' + (opts.animOut || 'fadeOut delay-4s');
 	const animEnd = 'webkitAnimationEnd';
 	const style = opts.css || opts.style || {};
 	const animOutDelay = {};
 
-	if (opts.animDuration) {
-		style['-webkit-animation-duration'] = opts.animDuration + 's';
-	}
+	style['-webkit-animation-duration'] = '.5s';
 
 	if (opts.animInDelay) {
 		style['animation-delay'] = opts.animInDelay + 's';
@@ -37,8 +33,6 @@ const createNotification = (msg, options) => {
 		.before(`<img src="img/sign-${type}-icon.png"/>`);
 
 	$('.messages').prepend(popup);
-
-	popupSound.play();
 }
 
 const setZoomLevel = lvl => $('body').css('zoom', lvl);

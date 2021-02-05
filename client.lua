@@ -15,9 +15,8 @@ end)
 
 addEventHandler('onClientBrowserDocumentReady', web, function()
 	web:injectMouseDown('left')
-	local sr = sw/sh
-	web:exec('setZoomLevel', sr/1.77*(sr*0.5))
-	-- info('Welcome to the server!')
+	local sr = sh/1080
+	web:exec('setZoomLevel', sr*0.5)
 end)
 
 addEventHandler('onClientRender', root, function()
